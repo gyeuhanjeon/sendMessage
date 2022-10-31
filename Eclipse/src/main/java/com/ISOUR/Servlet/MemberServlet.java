@@ -19,6 +19,7 @@ import com.ISOUR.DAO.MemberDAO;
 import com.ISOUR.VO.MemberVO;
 
 
+@SuppressWarnings("serial")
 @WebServlet("/MemberServlet")
 public class MemberServlet extends HttpServlet {
 
@@ -69,8 +70,9 @@ public class MemberServlet extends HttpServlet {
 //			DateFormat dateFormat = new SimpleDateFormat("YYYY-MM-dd");
 //			String dateToStr = dateFormat.format(e.getBirth());   // 시간을 문자열로 형변환
 			memberInfo.put("birth", e.getBirth());
-			memberInfo.put("sex", e.getSex());
-			memberInfo.put("addr", e.getAddr());
+			memberInfo.put("gender", e.getGender());
+			memberInfo.put("region1", e.getRegion1());
+			memberInfo.put("region2", e.getRegion2());
 			
 			memberArray.add(memberInfo);
 		}
