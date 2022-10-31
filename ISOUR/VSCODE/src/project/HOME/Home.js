@@ -1,3 +1,5 @@
+import React, { useState, useEffect } from 'react';
+import TeamAPI from '../api/TeamAPI'
 import nowGo from '../images/short_cut.png'
 
 const Home = () => {
@@ -6,6 +8,23 @@ const Home = () => {
   const localPw = window.localStorage.getItem("userPw");
   const isLogin = window.localStorage.getItem("isLogin");
   if(isLogin === "FALSE") window.location.replace("/");
+
+  const [memberInfo, setMemberInfo] = useState(""); // 현재 로그인 되어 있는 회원의 정보 저장용
+
+  useEffect(() => {
+        
+    const memberData = async () => {
+      console.log("localId : "+ localId);
+      try {
+          const response = await TeamAPI.MemberInfo(localId); // 원래는 전체 회원 조회용
+          setMemberInfo(response.data);
+          console.log(response.data)
+      } catch (e) {
+          console.log(e);
+      }
+    };
+    memberData();
+    }, []);
 
   const onClickMember = () => {
     console.log("회원 목록 조회 눌렀어요.");
@@ -31,8 +50,15 @@ const Home = () => {
           </div>
         </div>
         <div className="history" >
-          <p>내 아이디 : {localId}</p>
-          <p>내 패스워드 : {localPw}</p>
+          {memberInfo && memberInfo.map(member => (
+            <div key={member.id}>
+              <p>이름 : {member.name}</p>
+              <p>아이디 : {member.id}</p>
+              <p>비밀번호 : {member.pwd}</p>
+              <p>생년월일 : {member.birth}</p>
+              <p>성별 : {member.gender}</p>
+              <p>주소 : {member.region1} {member.region2}</p>
+            </div>))}
         </div>
       </div>
     </div>

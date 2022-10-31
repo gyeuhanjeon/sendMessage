@@ -10,6 +10,7 @@ public class MemberVO {
 	private String gender;
 	private String region1;
 	private String region2;
+	
 	public String getName() {
 		return name;
 	}

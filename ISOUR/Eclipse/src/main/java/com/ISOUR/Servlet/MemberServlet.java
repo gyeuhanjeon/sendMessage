@@ -45,7 +45,8 @@ public class MemberServlet extends HttpServlet {
 		
 		// TeamAPI.js 에 작성해둔 cmd : "MemberInfo" 를 가져온다.
 		String reqCmd = (String)jsonObj.get("cmd");
-		
+		String reqId = (String)jsonObj.get("id");
+		System.out.println("전달 받은 ID : " + reqId);
 		
 		PrintWriter out = response.getWriter();
 		
@@ -58,7 +59,7 @@ public class MemberServlet extends HttpServlet {
 		}
 		
 		MemberDAO dao = new MemberDAO();
-		List<MemberVO> list = dao.memberSelect();
+		List<MemberVO> list = dao.memberSelect(reqId);
 		
 		JSONArray memberArray = new JSONArray();
 		

@@ -98,12 +98,15 @@ public class MemberDAO {
 	}
 	
 	// 회원 목록 조회
-	public List<MemberVO> memberSelect() {
+	public List<MemberVO> memberSelect(String reqId) {
 		List<MemberVO> list = new ArrayList<>();
 		try {
 			conn = Common.getConnection();
 			stmt = conn.createStatement();
-			String sql = "SELECT * FROM I_MEMBER";
+			String sql = null;
+			if(reqId.equals("ALL")) sql = "SELECT * FROM I_MEMBER";
+			else sql = "SELECT * FROM I_MEMBER WHERE ID = " + "'" + reqId + "'";
+			
 			rs = stmt.executeQuery(sql);
 			
 			while(rs.next()) {

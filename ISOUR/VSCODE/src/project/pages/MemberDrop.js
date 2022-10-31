@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import imgHome from '../images/home_button.png'
 import Modal from '../util/Modal';
 
-const MemberInfo = () => {
+const MemberDrop = () => {
   const localId = window.localStorage.getItem("userId");
 
   const [loading, setLoading] = useState(false);
@@ -17,57 +17,38 @@ const MemberInfo = () => {
     setPassword(temp_password);
   };
 
-  // const onClickButton = async() => {
-  //   console.log("탈퇴하기 버튼 눌렀어요.");
-  //   alert("정말 탈퇴하시겠습니까?ㅠㅠ");
+  const onTest = async() => {
+    var message = "정말로 탈퇴하시겠습니까??";
+    let result = window.confirm(message);
+    console.log(result);
 
-  //   try {
-  //     const res = await TeamAPI.memberDrop(localId, password);
-  //     // 아이디와 비밀번호 확인을 위한 axios 호출
-  //     console.log("res.data : " + res.data);
-  //     console.log("호출 TRY: " + res.data.result);
-  //     alert("console 확인용 알림창");
-
-  //     if(res.data.result === "OK") {
-  //       console.log("로그인한 아이디(ID) : " + localId);
-  //       console.log("입력한 Password : " + password);
-  //       console.log("탈퇴 완료");
-  //       window.location.replace("/");
-  //     } else {
-  //       console.log("입력한 Password : " + password);
-  //       console.log("비밀번호가 일치하지 않습니다.");
-  //       alert('비밀번호가 일치하지 않습니다.');
-  //     }
-  //   } catch (e) {
-  //     alert("오류 발생!! 아이디(" + localId +")랑 비밀번호("+ password +")는 일단 넘어와요.");
-  //     console.log("로그인 에러!! 왜 또 안 될까..?");
-  //   }
-  // }
-
-  const [modalOpen, setModalOpen] = useState(false);
-
-    const closeModal = () => {
-        setModalOpen(false);
-    };
-
-    const confirmModal = async () => {
-        setModalOpen(false);
-        window.location.replace("/memberOut");
-
-    };
-    const onClickMemberDelete = () => {
-        setModalOpen(true);
+    if(result) {
+      try {
+        const res = await TeamAPI.memberDrop(localId, password);
+        // 로그인을 위한 axios 호출
+        console.log("호출 TRY: " + res.data.result);
+  
+        if(res.data.result === "OK") {
+          console.log("삭제 되였습니다.");
+          window.localStorage.setItem("userId", "");
+          window.localStorage.setItem("userPw", "");
+          alert("콘솔 확인용");
+          window.location.replace("/");
+        } else {
+          alert("비밀번호를 확인하세요.");
+        }
+      } catch (e) {
+        alert("오류 발생!!");
+        console.log("탈퇴 에러!! 왜 또 안 될까..?");
+      }
+      
+    } else {
+      console.log("탈퇴하는 것을 취소합니다.");
     }
-
-
-    const onClickMember = () => {
-        console.log("회원정보로 이동");
-        window.location.replace("/MemberInfo");
-    }
-
+  };
 
   if(loading) { return <p>대기중...</p> }
-
+  
   return(
     <>
     {/* 아이디 */}
@@ -89,11 +70,11 @@ const MemberInfo = () => {
     {/* 탈퇴하기 */}
     <div className='field-wrap'>
       <div className='input-field'>
-      {modalOpen && <Modal open={modalOpen} confirm={confirmModal} close={closeModal} type={true} header="확인">정말 탈퇴하시겠습니까?</Modal>}
-        {/* <button type="submit" onClick={onClickButton}>탈퇴하기</button> */}
+        <button onClick={onTest}>탈퇴하기</button>
       </div>
     </div>
   </>
   );
 }
-export default MemberInfo;
+
+export default MemberDrop;

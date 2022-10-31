@@ -16,9 +16,10 @@ const TeamAPI = {
   },
 
   // 회원 정보 조회
-  MemberInfo: async function() {
+  MemberInfo: async function(id) {
     const regCmd = {
-      cmd : "MemberInfo"
+      cmd : "MemberInfo",
+      id : id
     }
     return await axios.post(TEAM_DOMAIN + "MemberServlet", regCmd, HEADER);
   },
