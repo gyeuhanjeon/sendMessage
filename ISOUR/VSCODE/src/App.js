@@ -5,7 +5,7 @@ import Home from './project/HOME/Home';
 import MyPage from './project/pages/MyPage';
 import MemberInfo from './project/pages/MemberInfo';
 import MemberDrop from './project/pages/MemberDrop';
-import SignUp from './project/SingUp/SignUpTest';
+import SignUp from './project/SingUp/SignUp';
 
 
 function App() {
