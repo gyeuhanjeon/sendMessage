@@ -256,7 +256,7 @@ function SignUpTest() {
         console.log("region2 : " + region2);
         console.log("가입 완!!");
         alert("콘솔창 확인용");
-        window.location.replace("/home");
+        window.location.replace("/login");
     } else {
       console.log("잘못 입력한 값이 있거나 입력되지 않은 값이 있어요.");
       alert('입력된 값을 확인하세요.');

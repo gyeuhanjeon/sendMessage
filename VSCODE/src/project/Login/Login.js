@@ -41,13 +41,12 @@ function Login() {
       const res = await TeamAPI.userLogin(inputId, inputPassword);
       // 로그인을 위한 axios 호출
       console.log("호출 TRY: " + res.data.result);
-      alert("console 확인용 알림창");
 
       if(res.data.result === "OK") {
         window.localStorage.setItem("userId", inputId);
         window.localStorage.setItem("userPw", inputPassword);
         window.localStorage.setItem("isLogin", "TRUE");
-        window.location.replace("/mypage");
+        window.location.replace("/home");
       } else {
         alert("아이디 또는 비밀번호를 확인하세요!");
       }
