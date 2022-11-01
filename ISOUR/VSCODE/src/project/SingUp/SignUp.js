@@ -23,7 +23,7 @@ const Msg = styled.div`
 
 
 
-function SignUpTest() {
+function SignUp() {
   // 이름, 아이디, 비밀번호, 비밀번호 확인, 생년월일, 성별, 주소, 회원가입
   // 조혜경 : 입력 받을 값 상태
   const [name, setName] = useState('');
@@ -369,4 +369,4 @@ function SignUpTest() {
   );
 }
 
-export default SignUpTest;
+export default SignUp;
