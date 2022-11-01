@@ -1,4 +1,6 @@
 import axios from "axios";
+
+
 const HEADER = 'application/json';
 const TEAM_DOMAIN = "http://localhost:8090/ISOUR/";
 
@@ -38,6 +40,15 @@ const TeamAPI = {
     };
 
     return await axios.post(TEAM_DOMAIN + "MemberRegServlet", memberObj, HEADER);
+  },
+
+  // MBTI 검사 결과
+  mbtiReg: async function(result) {
+    const resultObj = {
+      result: result,
+    };
+
+    return await axios.post(TEAM_DOMAIN + "MbtiRegServlet", resultObj, HEADER);
   },
 
   // 회원 탈퇴

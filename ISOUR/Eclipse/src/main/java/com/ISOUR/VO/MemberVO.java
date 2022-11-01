@@ -11,6 +11,7 @@ public class MemberVO {
 	private String gender;
 	private String region1;
 	private String region2;
+	private String mbti;
 	
 	public String getName() {
 		return name;
@@ -60,6 +61,11 @@ public class MemberVO {
 	public void setRegion2(String region2) {
 		this.region2 = region2;
 	}
-
-
+	public String getMbti() {
+		return mbti;
+	}
+	public void setMbti(String mbti) {
+		this.mbti = mbti;
+	}
+	
 }

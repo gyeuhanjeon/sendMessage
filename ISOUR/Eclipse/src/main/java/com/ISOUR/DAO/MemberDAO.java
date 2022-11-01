@@ -119,6 +119,7 @@ public class MemberDAO {
 				String gender = rs.getString("GENDER");
 				String region1 = rs.getString("REGION1");
 				String region2 = rs.getString("REGION2");
+				String mbti = rs.getString("MBTI");
 				
 				MemberVO vo = new MemberVO();  // 각 정보를 저장할 수 있는 객체 생성.
 				vo.setName(name);
@@ -129,6 +130,7 @@ public class MemberDAO {
 				vo.setGender(gender);
 				vo.setRegion1(region1);
 				vo.setRegion2(region2);
+				vo.setMbti(mbti);
 				
 				list.add(vo);  // 받은 정보를 list로 저장. 
 			}
@@ -187,6 +189,30 @@ public class MemberDAO {
 			
 			result = pstmt.executeUpdate();	
 			System.out.println("회원 가입 DB 결과 확인 : " + result);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		Common.close(rs);
+		Common.close(pstmt);
+		Common.close(conn);
+		
+		if(result == 1) return true;
+		else return false;
+	}
+
+	// MBTI 검사 결과 등록
+	public boolean mbtiRegister(String mbti) {
+		int result = 0;
+		// 테이블 컬럼명이랑 똑같이
+		String sql = "INSERT INTO I_MEMBER (MBTI) VALUES(?)";
+		try {
+			conn = Common.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, mbti);
+			
+			result = pstmt.executeUpdate();	
+			System.out.println("MBTI 결과 DB 등록 확인 : " + result);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
