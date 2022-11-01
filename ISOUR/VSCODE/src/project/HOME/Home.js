@@ -3,11 +3,11 @@ import TeamAPI from '../api/TeamAPI'
 import nowGo from '../images/short_cut.png'
 
 const Home = () => {
+  const isLogin = window.localStorage.getItem("isLogin");
+  if(isLogin === "FALSE") window.location.replace("/");
 
   const localId = window.localStorage.getItem("userId");
   const localPw = window.localStorage.getItem("userPw");
-  const isLogin = window.localStorage.getItem("isLogin");
-  if(isLogin === "FALSE") window.location.replace("/");
 
   const [memberInfo, setMemberInfo] = useState(""); // 현재 로그인 되어 있는 회원의 정보 저장용
 
@@ -16,11 +16,11 @@ const Home = () => {
     const memberData = async () => {
       console.log("localId : "+ localId);
       try {
-          const response = await TeamAPI.MemberInfo(localId); // 원래는 전체 회원 조회용
-          setMemberInfo(response.data);
-          console.log(response.data)
+        const response = await TeamAPI.memberInfo(localId); // 원래는 전체 회원 조회용
+        setMemberInfo(response.data);
+        console.log(response.data)
       } catch (e) {
-          console.log(e);
+        console.log(e);
       }
     };
     memberData();
@@ -32,7 +32,8 @@ const Home = () => {
   }
   
   const onClickDrop = () => {
-    console.log("중복확인 버튼 눌렀어요.");
+    console.log("탈퇴하기 버튼 눌렀어요.");
+    alert("콘솔 확인하세요.")
     window.location.replace("/MemberDrop");
   }
 
@@ -56,6 +57,7 @@ const Home = () => {
               <p>아이디 : {member.id}</p>
               <p>비밀번호 : {member.pwd}</p>
               <p>생년월일 : {member.birth}</p>
+              <p>나이 : {member.age}</p>
               <p>성별 : {member.gender}</p>
               <p>주소 : {member.region1} {member.region2}</p>
             </div>))}

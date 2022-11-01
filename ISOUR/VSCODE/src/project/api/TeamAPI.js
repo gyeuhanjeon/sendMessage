@@ -16,7 +16,7 @@ const TeamAPI = {
   },
 
   // 회원 정보 조회
-  MemberInfo: async function(id) {
+  memberInfo: async function(id) {
     const regCmd = {
       cmd : "MemberInfo",
       id : id
@@ -25,12 +25,13 @@ const TeamAPI = {
   },
 
   // 회원 가입
-  memberReg: async function(name, id, pwd, birth, gender, region1, region2) {
+  memberReg: async function(name, id, pwd, birth, age, gender, region1, region2) {
     const memberObj = {
       name: name,
       id: id,
       pwd: pwd,
       birth: birth,
+      age: age,
       gender: gender,
       region1: region1,
       region2: region2

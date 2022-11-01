@@ -40,12 +40,13 @@ public class MemberRegServlet extends HttpServlet {
 		String getId = (String)jsonObj.get("id");
 		String getPwd = (String)jsonObj.get("pwd");
 		String getBirth = (String)jsonObj.get("birth");
+		String getAge = (String)jsonObj.get("age");
 		String getGender = (String)jsonObj.get("gender");
 		String getRegion1 = (String)jsonObj.get("region1");
 		String getRegion2 = (String)jsonObj.get("region2");
 		
 		MemberDAO dao = new MemberDAO();
-		boolean rstComplete = dao.memberRegister(getName, getId, getPwd, getBirth, getGender, getRegion1, getRegion2);
+		boolean rstComplete = dao.memberRegister(getName, getId, getPwd, getBirth, getAge, getGender, getRegion1, getRegion2);
 		
 		PrintWriter out = response.getWriter();
 		JSONObject resJson = new JSONObject();

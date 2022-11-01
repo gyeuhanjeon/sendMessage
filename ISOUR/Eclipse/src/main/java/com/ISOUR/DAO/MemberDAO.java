@@ -115,6 +115,7 @@ public class MemberDAO {
 				String id = rs.getString("ID");
 				String pwd = rs.getString("PASSWORD");
 				String birth = rs.getString("BIRTH");
+				String age = rs.getString("AGE");
 				String gender = rs.getString("GENDER");
 				String region1 = rs.getString("REGION1");
 				String region2 = rs.getString("REGION2");
@@ -124,6 +125,7 @@ public class MemberDAO {
 				vo.setId(id);
 				vo.setPwd(pwd);
 				vo.setBirth(birth);
+				vo.setAge(age);
 				vo.setGender(gender);
 				vo.setRegion1(region1);
 				vo.setRegion2(region2);
@@ -166,10 +168,10 @@ public class MemberDAO {
 	
 	// 회원가입
 	// 내가 회원가입창에서 입력하는 이름(name), 아이디(id), 비밀번호(pwd), 생년월일(birth)
-	public boolean memberRegister(String name, String id, String pwd, String birth, String gender, String region1, String region2) {
+	public boolean memberRegister(String name, String id, String pwd, String birth, String age, String gender, String region1, String region2) {
 		int result = 0;
 		// 테이블 컬럼명이랑 똑같이
-		String sql = "INSERT INTO I_MEMBER (NAME, ID, PASSWORD, BIRTH, GENDER, REGION1, REGION2) VALUES(?, ?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO I_MEMBER (NAME, ID, PASSWORD, BIRTH, AGE, GENDER, REGION1, REGION2) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
 		try {
 			conn = Common.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -177,9 +179,10 @@ public class MemberDAO {
 			pstmt.setString(2, id);
 			pstmt.setString(3, pwd);
 			pstmt.setString(4, birth);
-			pstmt.setString(5, gender);
-			pstmt.setString(6, region1);
-			pstmt.setString(7, region2);
+			pstmt.setString(5, age);
+			pstmt.setString(6, gender);
+			pstmt.setString(7, region1);
+			pstmt.setString(8, region2);
 			
 			
 			result = pstmt.executeUpdate();	

@@ -16,7 +16,7 @@ const MemberInfo = () => {
     margin: 0 auto;
     margin-top: 2rem;
     @media screen and (max-width: 768px) {
-      witdh: 100%;
+      width: 100%;
       padding-left: 1em;
       padding-right:1em;
     }
@@ -48,7 +48,7 @@ const MemberInfo = () => {
     const memberData = async () => {
       setLoading(true);
       try {
-        const response = await TeamAPI.MemberInfo();
+        const response = await TeamAPI.memberInfo("ALL");
         setMemberInfo(response.data);
         console.log(response.data)
       } catch (e) {
@@ -72,16 +72,18 @@ const MemberInfo = () => {
           <th>아이디(ID)</th>
           <th>비밀번호(PASSWORD)</th>
           <th>생년월일(BIRTH)</th>
-          <th>성별(SEX)</th>
+          <th>나이(AGE)</th>
+          <th>성별(GENDER)</th>
           <th>시도(REGION1)</th>
           <th>시/구/군(REGION2)</th>
         </tr>
         {memberInfo && memberInfo.map(member => (
-          <tr key={member.id}>
+          <tr key={member.name}>
             <td>{member.name}</td>
             <td>{member.id}</td>
             <td>{member.pwd}</td>
             <td>{member.birth}</td>
+            <td>{member.age}</td>
             <td>{member.gender}</td>
             <td>{member.region1}</td>
             <td>{member.region2}</td>

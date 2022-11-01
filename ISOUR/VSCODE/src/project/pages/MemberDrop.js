@@ -8,6 +8,8 @@ import Modal from '../util/Modal';
 
 const MemberDrop = () => {
   const localId = window.localStorage.getItem("userId");
+  const isLogin = window.localStorage.getItem("isLogin");
+  if(isLogin === "FALSE") window.location.replace("/");
 
   const [loading, setLoading] = useState(false);
   const [password, setPassword] = useState('');
@@ -32,6 +34,7 @@ const MemberDrop = () => {
           console.log("삭제 되였습니다.");
           window.localStorage.setItem("userId", "");
           window.localStorage.setItem("userPw", "");
+          window.localStorage.setItem("isLogin", "FALSE");
           alert("콘솔 확인용");
           window.location.replace("/");
         } else {

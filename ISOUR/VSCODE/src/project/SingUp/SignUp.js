@@ -14,7 +14,7 @@ const regexPw = /^\w{8,20}$/;
 
 
 const Msg = styled.div`
-  color: red;
+  color: white;
   font-size: .8em;
   display: flex;
   justify-content: flex-end;
@@ -31,6 +31,7 @@ function SignUpTest() {
   const [password, setPassword] = useState('');
   const [password_check, setPassword_check] = useState('');
   const [birth, setBirth] = useState('');
+  const [age, setAge] = useState("");
   const [gender, setGender] = useState('');
 
   const { sido, sigugun } = hangjungdong;
@@ -39,7 +40,6 @@ function SignUpTest() {
   const [keySido, setKeySido] = useState("");
 
   const today = new Date();
-  const [age, setAge] = useState(0);
 
 
   // 조혜경 : 보여줄 문구 따로 빼기
@@ -191,13 +191,16 @@ function SignUpTest() {
 
       // 1992-02-20
       // 0123456789
-      setAge(today.getFullYear() - birthArray[0]);
+      setAge(String(today.getFullYear() - birthArray[0]));
 
       const m = today.getMonth() - birthArray[1]; 
       if (m < 0 || (m === 0 && today.getDate() < birthArray[2])) {
-        setAge(age-1);
+        setAge(String(age-1));
       }
     }
+    console.log("age : " + age);
+    console.log("typeof(age) : " + typeof(age));
+
   };
 
   const onChangeRadio = e => {
@@ -245,12 +248,13 @@ function SignUpTest() {
     console.log("isRegion2 : " + isRegion2);
     
     if(isName && isId && isId_check && isPassword && isBirth && isGender && isRegion1 && isRegion2) {
-      const memberReg = await TeamAPI.memberReg(name, id, password, birth, gender, region1, region2);
+      const memberReg = await TeamAPI.memberReg(name, id, password, birth, age, gender, region1, region2);
   
         console.log("name : " + name);
         console.log("id : " + id);
         console.log("password : " + password);
         console.log("birth : " + birth);
+        console.log("age : " + age);
         console.log("gender : " + gender);
         console.log("region1 : " + region1);
         console.log("region2 : " + region2);
@@ -338,7 +342,7 @@ function SignUpTest() {
     {/* 주소 */}
       <div>
         <select onChange={onChangeRegion1}>
-          <option disabled>시도선택</option>
+          <option disabled selected>시도선택</option>
           {sido.map((e) => (
             <option key={e.sido} value={e.codeNm}>
               {e.codeNm}
@@ -346,7 +350,7 @@ function SignUpTest() {
           ))}
         </select>
         <select onChange={onChangeRegion2}>
-          <option disabled>시/구/군선택</option>
+          <option disabled selected>시/구/군선택</option>
           
           {sigugun
           // 필터함수를 사용하여 배열을 필터링하여 군/구를 불러옴
