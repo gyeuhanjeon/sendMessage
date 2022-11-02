@@ -193,7 +193,12 @@ function SignUp() {
       // 0123456789
       setAge(String(today.getFullYear() - birthArray[0]));
 
+      console.log("오늘은 몇 년도? "+ String(today.getFullYear()));
+
       const m = today.getMonth() - birthArray[1]; 
+      console.log("오늘 몇 월인가요?" + today.getMonth());
+      console.log("m의 값은 얼마인가요? " + m);
+
       if (m < 0 || (m === 0 && today.getDate() < birthArray[2])) {
         setAge(String(age-1));
       }

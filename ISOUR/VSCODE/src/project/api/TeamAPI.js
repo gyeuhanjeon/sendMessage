@@ -43,12 +43,13 @@ const TeamAPI = {
   },
 
   // MBTI 검사 결과
-  mbtiReg: async function(result) {
+  mbtiReg: async function(mbti, id) {
     const resultObj = {
-      result: result,
+      mbti: mbti,
+      id: id
     };
 
-    return await axios.post(TEAM_DOMAIN + "MbtiRegServlet", resultObj, HEADER);
+    return await axios.post(TEAM_DOMAIN + "TestServlet", resultObj, HEADER);
   },
 
   // 회원 탈퇴
