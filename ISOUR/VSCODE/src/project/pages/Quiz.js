@@ -1,7 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
 import styled from 'styled-components';
-import SwipeItem from './SwipeItem';
 
 // QuizApp 의 Line 44 에서 props를 넘겨받음.
 // props 1 ▶ mode={()=>changeMode('score')} 

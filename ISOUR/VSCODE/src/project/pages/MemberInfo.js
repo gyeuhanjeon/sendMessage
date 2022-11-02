@@ -76,6 +76,7 @@ const MemberInfo = () => {
           <th>성별(GENDER)</th>
           <th>시도(REGION1)</th>
           <th>시/구/군(REGION2)</th>
+          <th>MBTI</th>
         </tr>
         {memberInfo && memberInfo.map(member => (
           <tr key={member.name}>
@@ -87,6 +88,7 @@ const MemberInfo = () => {
             <td>{member.gender}</td>
             <td>{member.region1}</td>
             <td>{member.region2}</td>
+            <td>{member.mbti}</td>
           </tr>
         ))}
       </MemberList>

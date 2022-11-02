@@ -9,6 +9,7 @@ import "./pg1.css";
 // props 2 ▶ quizList={states.quizList}
 const Quiz = (props) => {
   
+  const localId = window.localStorage.getItem("userId");
   const [count, setCount] = useState(0);
   const [testMBTI, setTestMBTI] = useState("");
 
@@ -25,14 +26,14 @@ const Quiz = (props) => {
     console.log("MBTI 결과 : " + testMBTI);
 
     try {
-      const res = await TeamAPI.mbtiReg(testMBTI);
+      const res = await TeamAPI.mbtiReg(testMBTI, localId);
       // 로그인을 위한 axios 호출
       console.log("호출 TRY: " + res.data.result);
 
       if(res.data.result === "OK") {
         alert("저장이 잘 되었는지 확인해봐요.")
         // window.localStorage.setItem("isLogin", "TRUE");
-        // window.location.replace("/home");
+        window.location.replace("/");
       } else {
         alert("아이디 또는 비밀번호를 확인하세요!");
       }

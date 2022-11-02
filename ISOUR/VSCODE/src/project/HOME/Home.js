@@ -37,6 +37,12 @@ const Home = () => {
     window.location.replace("/MemberDrop");
   }
 
+  const onClickTestStart = () => {
+    console.log("검사하기 버튼 눌렀어요.");
+    alert("콘솔 확인하세요.")
+    window.location.replace("/pg");
+  }
+
   return(
     <div>
       <div className="container">
@@ -60,6 +66,7 @@ const Home = () => {
               <p>나이 : {member.age}</p>
               <p>성별 : {member.gender}</p>
               <p>주소 : {member.region1} {member.region2}</p>
+              <p>MBTI : {member.mbti ? member.mbti: <button onClick={onClickTestStart}>검사하기</button>}</p>
             </div>))}
         </div>
       </div>

@@ -1,6 +1,5 @@
 import React , { useState } from 'react';
 import styled from 'styled-components';
-// import SwipeItem from './SwipeItem';
 import Quiz from './Quiz';
 
 const QuizApp = () => {
