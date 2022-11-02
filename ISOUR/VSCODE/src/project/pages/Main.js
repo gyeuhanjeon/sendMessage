@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import '../CSS/Style_Login.css';
 
 function Main() {
 

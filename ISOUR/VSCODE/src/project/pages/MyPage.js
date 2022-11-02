@@ -1,5 +1,6 @@
 import nowGo from '../images/short_cut.png'
 
+
 function MyPage() {
   const localId = window.localStorage.getItem("userId");
   const localPw = window.localStorage.getItem("userPw");

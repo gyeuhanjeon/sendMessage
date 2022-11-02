@@ -1,6 +1,7 @@
 import React , { useState } from 'react';
 import styled from 'styled-components';
 import Quiz from './Quiz';
+import '../CSS/Style_Login.css';
 
 const QuizApp = () => {
   
@@ -29,7 +30,7 @@ const QuizApp = () => {
   // };
 
   return (
-    <div>
+    <div className='Container'>
     {/* mode 가 main 일 때 */}
       {states.mode === 'main' ?
       <div>

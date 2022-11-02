@@ -24,7 +24,7 @@ function Navbar2() {
             </div>
             <nav ref={uavRef}>
                 <a href="/">HOME</a>
-                <a href="/#">TEST</a>
+                <a href="/QuizApp">TEST</a>
                 <a href="/#">BOARD</a>
                 <a href="/mypage">My Page</a>
                 {/* 닫기 버튼 */}

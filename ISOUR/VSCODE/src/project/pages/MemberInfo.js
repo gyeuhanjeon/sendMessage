@@ -4,6 +4,7 @@ import TeamAPI from '../api/TeamAPI'
 import styled from 'styled-components';
 import { Link } from "react-router-dom";
 import imgHome from '../images/home_button.png'
+import '../CSS/Style_Login.css';
 
 const MemberInfo = () => {
   const [memberInfo, setMemberInfo] = useState('');
