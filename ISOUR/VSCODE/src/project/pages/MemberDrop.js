@@ -53,30 +53,30 @@ const MemberDrop = () => {
   if(loading) { return <p>대기중...</p> }
   
   return(
-    <>
-    {/* 아이디 */}
-    <div className='field-wrap'>
-      <div className='input-field'>
-        {/* <span style={{display: 'inline-block', width: 150}}>아이디</span> */}
-        <p>내 아이디 : {localId}</p>
+    <div className="Container">
+      {/* 아이디 */}
+      <div className='field-wrap'>
+        <div className='input-field'>
+          {/* <span style={{display: 'inline-block', width: 150}}>아이디</span> */}
+          <p>내 아이디 : {localId}</p>
+        </div>
       </div>
-    </div>
 
-    {/* 비밀번호 */}
-    <div className='field-wrap'>
-      <div className='input-field'>
-        <span style={{display: 'inline-block', width: 150}}>비밀번호</span>
-        <input type="password" value={password} onChange={onChangePassword} />
+      {/* 비밀번호 */}
+      <div className='field-wrap'>
+        <div className='input-field'>
+          <span style={{display: 'inline-block', width: 150}}>비밀번호</span>
+          <input type="password" value={password} onChange={onChangePassword} />
+        </div>
       </div>
-    </div>
 
-    {/* 탈퇴하기 */}
-    <div className='field-wrap'>
-      <div className='input-field'>
-        <button onClick={onTest}>탈퇴하기</button>
+      {/* 탈퇴하기 */}
+      <div className='field-wrap'>
+        <div className='input-field'>
+          <button onClick={onTest}>탈퇴하기</button>
+        </div>
       </div>
     </div>
-  </>
   );
 }
 

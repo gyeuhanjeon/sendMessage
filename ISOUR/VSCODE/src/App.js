@@ -8,11 +8,13 @@ import MemberDrop from './project/pages/MemberDrop';
 import SignUp from './project/SingUp/SignUp';
 import QuizApp from './project/pages/QuizApp';
 import Pg1 from './project/pages/FreeTest/pg1';
+import Navbar2 from './project/Navbar/Navbar2';
 
 
 function App() {
   return (
     <Router>
+      <Navbar2 />
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/login" element={<Login />} />

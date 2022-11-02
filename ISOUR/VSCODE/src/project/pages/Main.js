@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 function Main() {
 
     return(
-        <div>
+        <div className="Container">
             <div> 엠비티아이셔</div>
-            <Link to="/login"><button>시작하기</button></Link>
+            <span><Link to="/login"><button>시작하기</button></Link></span>
         </div>
     );
 }

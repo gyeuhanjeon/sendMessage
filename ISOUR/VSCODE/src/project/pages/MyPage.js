@@ -11,7 +11,7 @@ function MyPage() {
 
   return(
     <div>
-      <div className="container">
+      <div className="Container">
         <div className="mainhead">
           <div onClick={onClickDrop}>
             <img src={nowGo} alt="화살표" />

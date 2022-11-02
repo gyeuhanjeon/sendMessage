@@ -64,39 +64,41 @@ const MemberInfo = () => {
   }
 
   return(
-    <MemberListBlock>
-      <MemberList>
-        <MemberTitle>회원 정보</MemberTitle>
-        <tr>
-          <th>이름(NAME)</th>
-          <th>아이디(ID)</th>
-          <th>비밀번호(PASSWORD)</th>
-          <th>생년월일(BIRTH)</th>
-          <th>나이(AGE)</th>
-          <th>성별(GENDER)</th>
-          <th>시도(REGION1)</th>
-          <th>시/구/군(REGION2)</th>
-          <th>MBTI</th>
-        </tr>
-        {memberInfo && memberInfo.map(member => (
-          <tr key={member.name}>
-            <td>{member.name}</td>
-            <td>{member.id}</td>
-            <td>{member.pwd}</td>
-            <td>{member.birth}</td>
-            <td>{member.age}</td>
-            <td>{member.gender}</td>
-            <td>{member.region1}</td>
-            <td>{member.region2}</td>
-            <td>{member.mbti}</td>
+    <div className='Container'>
+      <MemberListBlock>
+        <MemberList>
+          <MemberTitle>회원 정보</MemberTitle>
+          <tr>
+            <th>이름(NAME)</th>
+            <th>아이디(ID)</th>
+            <th>비밀번호(PASSWORD)</th>
+            <th>생년월일(BIRTH)</th>
+            <th>나이(AGE)</th>
+            <th>성별(GENDER)</th>
+            <th>시도(REGION1)</th>
+            <th>시/구/군(REGION2)</th>
+            <th>MBTI</th>
           </tr>
-        ))}
-      </MemberList>
-      <Link to="/home" className="link-box">
-        <img className="link-img" src={imgHome} alt="HOME" />
-      <p>HOME으로 이동</p>
-      </Link>
-    </MemberListBlock>
+          {memberInfo && memberInfo.map(member => (
+            <tr key={member.name}>
+              <td>{member.name}</td>
+              <td>{member.id}</td>
+              <td>{member.pwd}</td>
+              <td>{member.birth}</td>
+              <td>{member.age}</td>
+              <td>{member.gender}</td>
+              <td>{member.region1}</td>
+              <td>{member.region2}</td>
+              <td>{member.mbti}</td>
+            </tr>
+          ))}
+        </MemberList>
+        <Link to="/home" className="link-box">
+          <img className="link-img" src={imgHome} alt="HOME" />
+        <p>HOME으로 이동</p>
+        </Link>
+      </MemberListBlock>
+    </div>
   );
 }
 export default MemberInfo;

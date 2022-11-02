@@ -57,10 +57,9 @@ function Login() {
   }
 
   return(
+    <div className='Container'>
       <div className="Login-card-container">
-        
         <div className="Login-card">
-
           <div className="Login-card-logo">
             <img src={logo} alt="logo" />
           </div>
@@ -126,6 +125,7 @@ function Login() {
           </div>
         </div>
       </div>
+    </div>
   );
 }
 
