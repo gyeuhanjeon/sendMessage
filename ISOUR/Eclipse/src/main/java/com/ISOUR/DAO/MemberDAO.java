@@ -202,14 +202,16 @@ public class MemberDAO {
 	}
 
 	// MBTI 검사 결과 등록
-	public boolean mbtiRegister(String mbti) {
+	public boolean mbtiRegister(String mbti, String id) {
 		int result = 0;
 		// 테이블 컬럼명이랑 똑같이
-		String sql = "INSERT INTO I_MEMBER (MBTI) VALUES(?)";
+		String sql = "UPDATE I_MEMBER SET MBTI = ? WHERE ID = ?";
+		
 		try {
 			conn = Common.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, mbti);
+			pstmt.setString(2, id);
 			
 			result = pstmt.executeUpdate();	
 			System.out.println("MBTI 결과 DB 등록 확인 : " + result);
