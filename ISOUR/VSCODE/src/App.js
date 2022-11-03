@@ -9,6 +9,7 @@ import SignUp from './project/SingUp/SignUp';
 import QuizApp from './project/pages/QuizApp';
 import Pg1 from './project/pages/FreeTest/pg1';
 import Navbar2 from './project/Navbar/Navbar2';
+import Talk from './project/pages/FreeTest/Talk';
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
         <Route path='/MemberDrop' element={<MemberDrop />} />
         <Route path='/QuizApp' element={<QuizApp />} />
         <Route path='/pg' element={<Pg1 />} />
+        <Route path='/Talk' element={<Talk />} />
       </Routes>
     </Router>
   );

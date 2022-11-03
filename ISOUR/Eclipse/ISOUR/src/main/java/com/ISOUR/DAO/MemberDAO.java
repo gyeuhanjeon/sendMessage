@@ -2,11 +2,12 @@ package com.ISOUR.DAO;
 
 import java.sql.*;
 //import java.sql.Date;
-
+import java.sql.Date;
 import java.util.*;
 
 import com.ISOUR.Common.Common;
 import com.ISOUR.VO.MemberVO;
+import com.ISOUR.VO.TalkVo;
 
 
 public class MemberDAO {
@@ -225,6 +226,74 @@ public class MemberDAO {
 		
 		if(result == 1) return true;
 		else return false;
+	}
+	
+	
+	public boolean TalkContent(String id, String content) {
+		int result = 0;
+		String sql = "INSERT INTO TALK_CONTENT(ID, CONTENT, TIME) VALUES(?, ?, to_char(sysdate,'yyyy.mm.dd hh24:mi:ss'))";
+		
+		System.out.println("sql 확인 : " + result);
+		try {
+			conn = Common.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setString(2, content);
+			
+			result = pstmt.executeUpdate();	
+			System.out.println("대화 저장 확인 : " + result);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		Common.close(pstmt);
+		Common.close(conn);
+		
+		if(result == 1) return true;
+		else return false;
+	}
+	
+	public List<TalkVo> talkShow(String reqId) {
+		List<TalkVo> list = new ArrayList<>();
+		try {
+			conn = Common.getConnection();
+			stmt = conn.createStatement();
+			String sql = null;
+			if(reqId.equals("ALL")) sql = "SELECT * FROM TALK_CONTENT";
+			else sql = "SELECT * FROM TALK_CONTENT WHERE ID = " + "'" + reqId + "'";
+			
+			System.out.println(sql);
+			
+			rs = stmt.executeQuery(sql);
+			
+			while(rs.next()) {
+				// getString() 안에 테이블의 컬럼명과 동일하게 입력해야 함
+				
+				String id = rs.getString("ID");
+				String content = rs.getString("CONTENT");
+				
+				System.out.println(content);
+				
+				String time = rs.getString("TIME");
+				
+				System.out.println(time);
+				
+				TalkVo vo = new TalkVo();  // 각 정보를 저장할 수 있는 객체 생성.
+				
+				vo.setId(id);
+				vo.setContent(content);
+				vo.setTime(time);
+				
+				list.add(vo);  // 받은 정보를 list로 저장. 
+			}
+			Common.close(rs);
+			Common.close(stmt);
+			Common.close(conn);
+								
+		} catch(Exception e) {
+			e.printStackTrace();	// 어디서 오류가 발생했는지 뿌려줌. 
+		}
+		return list;
 	}
 
 }

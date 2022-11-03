@@ -36,6 +36,11 @@ const Home = () => {
     alert("콘솔 확인하세요.")
     window.location.replace("/MemberDrop");
   }
+  const onClickTalk = () => {
+    console.log("채팅하기 버튼을 눌렀어요..");
+    alert("콘솔 확인하세요.")
+    window.location.replace("/Talk");
+  }
 
   const onClickTestStart = () => {
     console.log("검사하기 버튼 눌렀어요.");
@@ -54,6 +59,10 @@ const Home = () => {
           <div onClick={onClickDrop}>
             <img src={nowGo} alt="화살표" />
             <span>탈퇴하기</span>
+          </div>
+          <div onClick={onClickTalk}>
+            <img src={nowGo} alt="화살표" />
+            <span>채팅하기</span>
           </div>
         </div>
         <div className="history" >
